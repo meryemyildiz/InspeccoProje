@@ -1,5 +1,9 @@
 using AutoMapper;
+using BusinessLayer.Abstract;
+using BusinessLayer.Concrete;
 using DataAccessLayer;
+using DataAccessLayer.Abstract;
+using DataAccessLayer.Concrete;
 using EntityLayer.IdentityModels;
 using EntityLayer.Mappings;
 using Microsoft.AspNetCore.Builder;
@@ -33,7 +37,8 @@ namespace InspeccoUI
             {
                 options.UseSqlServer(Configuration.GetConnectionString("LocalConnection"));
             });
-
+            services.AddScoped<ICompanyService, CompanyManager>();
+            services.AddScoped<ICompanyDal, CompanyDal>();
             services.AddControllersWithViews();
             services.AddRazorPages();
             services.AddMvc();
@@ -76,8 +81,8 @@ namespace InspeccoUI
 
             app.UseRouting();
             app.UseSession();
-            app.UseAuthorization();
             app.UseAuthentication();
+            app.UseAuthorization();
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllerRoute(

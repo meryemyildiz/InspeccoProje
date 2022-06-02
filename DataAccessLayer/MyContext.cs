@@ -1,4 +1,5 @@
 ﻿using EntityLayer.IdentityModels;
+using EntityLayer.Models;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 using System;
@@ -13,7 +14,7 @@ namespace DataAccessLayer
         {
 
         }
-
+        public DbSet<Company>Companies  { get; set; }
 
         protected override void OnModelCreating(ModelBuilder builder)
         {

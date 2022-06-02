@@ -15,5 +15,6 @@ namespace EntityLayer.Models
         [DataType(DataType.DateTime)]
         [Column(Order = 2)]
         public DateTime CreatedDate { get; set; } = DateTime.Now;
+       
     }
 }

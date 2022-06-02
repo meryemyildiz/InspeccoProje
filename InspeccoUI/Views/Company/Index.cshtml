@@ -1,0 +1,12 @@
+﻿@model List<CompanyViewModel>
+@{
+    ViewData["Title"] = "Index";
+}
+
+@foreach (var item in Model)
+{
+    <h1>@item.CreatedDate</h1>
+    <h1>@item.Id</h1>
+    
+}
+
