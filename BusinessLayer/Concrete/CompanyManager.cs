@@ -15,30 +15,32 @@ namespace BusinessLayer.Concrete
     public class CompanyManager : ICompanyService
     {
         ICompanyDal _companyDal;
+        ICompanyService _companyService;
         IMapper _mapper;
 
-        public CompanyManager(ICompanyDal companyDal, IMapper mapper)
+        public CompanyManager(ICompanyDal companyDal, IMapper mapper, ICompanyService companyService)
         {
             _companyDal = companyDal;
             _mapper = mapper;
+            _companyService = companyService;
         }
 
-        public IResult Add(Company company)
+        public IResult Add(CompanyViewModel company)
         {
             throw new NotImplementedException();
         }
 
-        public IResult Delete(Company company)
+        public IResult Delete(CompanyViewModel company)
         {
             throw new NotImplementedException();
         }
 
-        public IDataResult<ICollection<CompanyViewModel>> GetAllCompany(Expression<Func<CompanyViewModel, bool>> filter)
+        public IDataResult<ICollection<CompanyViewModel>> GetAllCompany(Expression<Func<CompanyViewModel, bool>> filter = null)
         {
             try
             {
                 var result = _mapper.Map<Expression<Func<CompanyViewModel, bool>>, Expression<Func<Company, bool>>>(filter);
-                var companies = _companyDal.GetAll(result, includeEntities: "Companies").ToList();
+                var companies = _companyDal.GetAll(result).ToList();
 
                 ICollection<CompanyViewModel> list = new List<CompanyViewModel>();
                 foreach (var item in companies)
@@ -71,9 +73,13 @@ namespace BusinessLayer.Concrete
             throw new NotImplementedException();
         }
 
-        public IResult Update(Company company)
+        public IResult Update(CompanyViewModel company)
         {
             throw new NotImplementedException();
         }
     }
-}
+
+}  
+/*
+
+*/

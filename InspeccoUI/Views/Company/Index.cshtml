@@ -1,12 +1,32 @@
 ﻿@model List<CompanyViewModel>
 @{
-    ViewData["Title"] = "Index";
+    Layout = null;
 }
 
-@foreach (var item in Model)
-{
-    <h1>@item.CreatedDate</h1>
-    <h1>@item.Id</h1>
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Index</title>
+    <table>
+        <tr>
+            <th>Id</th>
+            <th>Created Date</th>
+            <th>Name</th>
+        </tr>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@item.Id</td>
+                <td>@item.CreatedDate</td>
+                <td>@item.CompanyName</td>
+            </tr>
+        }
+
+    </table>
     
-}
-
+</head>
+<body>
+</body>
+</html>

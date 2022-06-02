@@ -10,12 +10,12 @@ namespace BusinessLayer.Abstract
 {
    public interface ICompanyService
     {
-        IDataResult<ICollection<CompanyViewModel>> GetAllCompany(Expression<Func<CompanyViewModel,bool>> filter);
+        IDataResult<ICollection<CompanyViewModel>> GetAllCompany(Expression<Func<CompanyViewModel,bool>> filter=null);
         IDataResult<CompanyViewModel>GetFirstOrDefault(Expression<Func<CompanyViewModel, bool>> filter);
         IDataResult<CompanyViewModel> GetById(int id);
-        IResult Add(Company company);
-        IResult Delete(Company company);
-        IResult Update(Company company);
+        IResult Add(CompanyViewModel company);
+        IResult Delete(CompanyViewModel company);
+        IResult Update(CompanyViewModel company);
         
     }
 }

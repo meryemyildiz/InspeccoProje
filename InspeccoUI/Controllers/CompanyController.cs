@@ -1,4 +1,6 @@
 ﻿using BusinessLayer.Abstract;
+using EntityLayer.Models;
+using EntityLayer.ViewModels;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
@@ -19,7 +21,8 @@ namespace InspeccoUI.Controllers
         [HttpGet]
         public IActionResult Index()
         {
-            var result = _companyService.GetAllCompany(null);
+            //List<CompanyViewModel> result = new List<CompanyViewModel>();
+            var result = (_companyService.GetAllCompany()).Data;
             return View(result);
         }
     }
